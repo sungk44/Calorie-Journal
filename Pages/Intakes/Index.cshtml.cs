@@ -9,21 +9,22 @@ using Calorie_Journal.Models;
 
 namespace Calorie_Journal.Pages.Intakes
 {
-    public class IndexModel : PageModel
+  public class IndexModel : PageModel
+  {
+    private readonly Calorie_Journal.Models.IntakeContext _context;
+
+    public IndexModel(Calorie_Journal.Models.IntakeContext context)
     {
-        private readonly Calorie_Journal.Models.IntakeContext _context;
-
-        public IndexModel(Calorie_Journal.Models.IntakeContext context)
-        {
-            _context = context;
-        }
-
-        public IList<Intake> Intake { get;set; }
-
-        public async Task OnGetAsync()
-        {
-            Intake = await _context.Intake
-                .Include(i => i.FoodEntry).ToListAsync();
-        }
+      _context = context;
     }
+
+    public IList<Intake> Intake { get; set; }
+
+    public async Task OnGetAsync()
+    {
+      var intakes = from i in _context.Intake select i;
+      intakes = intakes.Where(i => i.DateTime.Date == DateTime.Today.Date);
+      Intake = await intakes.Include(i => i.FoodEntry).ToListAsync();
+    }
+  }
 }
