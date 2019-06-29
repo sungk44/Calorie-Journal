@@ -36,6 +36,9 @@ namespace Calorie_Journal
       services.AddDbContext<FoodContext>(options =>
           options.UseSqlite(Configuration.GetConnectionString("JournalContext")));
 
+      services.AddDbContext<IntakeContext>(options =>
+          options.UseSqlite(Configuration.GetConnectionString("JournalContext")));
+
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
     }
 
