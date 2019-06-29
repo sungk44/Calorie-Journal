@@ -39,11 +39,11 @@ namespace Calorie_Journal.Migrations.Intake
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DateTime");
+
                     b.Property<int>("FoodID");
 
                     b.Property<decimal>("Quantity");
-
-                    b.Property<DateTime>("Time");
 
                     b.HasKey("ID");
 

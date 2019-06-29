@@ -29,7 +29,7 @@ namespace Calorie_Journal.Migrations.Intake
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Time = table.Column<DateTime>(nullable: false),
+                    DateTime = table.Column<DateTime>(nullable: false),
                     Quantity = table.Column<decimal>(nullable: false),
                     FoodID = table.Column<int>(nullable: false)
                 },

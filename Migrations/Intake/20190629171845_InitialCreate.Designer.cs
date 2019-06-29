@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calorie_Journal.Migrations.Intake
 {
     [DbContext(typeof(IntakeContext))]
-    [Migration("20190629044625_InitialCreate")]
+    [Migration("20190629171845_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,11 +41,11 @@ namespace Calorie_Journal.Migrations.Intake
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DateTime");
+
                     b.Property<int>("FoodID");
 
                     b.Property<decimal>("Quantity");
-
-                    b.Property<DateTime>("Time");
 
                     b.HasKey("ID");
 
